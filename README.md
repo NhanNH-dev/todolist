@@ -15,13 +15,16 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 The page will reload if you make edits.<br />
 You will also see any lint errors in the console.
 
-API<br />
+MAIN FUNCTIONS<br />
 
 ```
-  Properties                Description
+  Funtions                Description
 
-  - cancelText	            Text of the Cancel button
-  
+  - Get Post	            Fetch all post
+  - Creat a new Post	    Create a new post by user
+  - Update a Post	        Update the post by user
+  - Delete a Post	        Delete the post by user
+  - Notifications         Notify for users of successed or failed.
 ```
-![modal](https://user-images.githubusercontent.com/55623692/96147728-c3ef8300-0f31-11eb-95c1-deb00c2d64c2.jpg)
+![list post](https://user-images.githubusercontent.com/55623692/97390371-3f2c3e00-190f-11eb-97cb-004314ea367f.jpg)
 
