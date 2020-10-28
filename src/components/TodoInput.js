@@ -1,27 +1,51 @@
-import React, { useState } from "react";
-import { connect } from "react-redux";
-import { addNewTodo } from "../redux/actions";
-import { useSelector } from "react-redux";
-import { useDispatch } from "react-redux";
+import React, { useEffect, useState } from "react";
+import { connect, useSelector } from "react-redux";
+import { addNewTodo, updateTodo } from "../redux/actions";
 
-const TodoInput = ({ addNewTodo }) => {
-  const [task, setTask] = useState({
-    userId: "1",
+const TodoInput = ({ addNewTodo, updateTodo }) => {
+  const post_by_id = useSelector(state => state.post_by_id)
+  const [post, setPost] = useState({
     title: "title",
     body: "",
+    id: `${Math.floor(Math.random() * 1000)}`,
   });
+  const [disable, setDisable] = useState(false);
+  const { body } = post;
 
   const handleChange = (e) => {
     const newTodo = e.target.value;
-    setTask({ ...task, body: newTodo });
+    setPost({ ...post, body: newTodo });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (task.body.length > 0) {
-      addNewTodo({ task });
+    if (body.length > 0) {
+      addNewTodo({ post });
     } else return;
-    setTask({ ...task, body: "" });
+    setTimeout(() => {
+      window.location.reload();
+    }, 2000);
+  };
+
+  const handleUpdate = (e) => {
+    e.preventDefault();
+    if (body.length > 0) {
+      updateTodo({ post });
+    } else return;
+    setTimeout(() => {
+      window.location.reload();
+    }, 2000);
+  };
+
+  useEffect(() => {
+    updatePost();
+  }, [post_by_id]);
+
+  const updatePost = () => {
+    if (post_by_id.length > 0) {
+      setPost({ ...post, body: post_by_id[0].body, id: post_by_id[0].id });
+      setDisable(true);
+    }
   };
   return (
     <>
@@ -29,18 +53,32 @@ const TodoInput = ({ addNewTodo }) => {
         className="todoInput"
         onChange={handleChange}
         type="text"
-        placeholder="Enter your task"
-        value={task.body}
+        placeholder="Enter your Post"
+        value={body || post_by_id.body}
       />
-      <button className='add_btn' type="submit" onClick={handleSubmit}>
+      <button
+        style={{ display: disable ? "none" : "inline" }}
+        className="button add_btn"
+        type="submit"
+        onClick={handleSubmit}
+      >
         Add
+      </button>
+      <button
+        style={{ display: disable ? "inline" : "none" }}
+        className="button update_btn"
+        type="submit"
+        onClick={handleUpdate}
+      >
+        Update
       </button>
     </>
   );
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  addNewTodo: (task) => dispatch(addNewTodo(task)),
+  addNewTodo: (post) => dispatch(addNewTodo(post)),
+  updateTodo: (post) => dispatch(updateTodo(post)),
 });
 
 export default connect(null, mapDispatchToProps)(TodoInput);

@@ -2,6 +2,40 @@
   margin: auto;
   text-align: center;
   width: 1200px;
+  .loading {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 20;
+    background: rgba(0, 0, 0, 0.4);
+    .loading_img {
+      position: fixed;
+      left: 0;
+      right: 0;
+      margin: 0 auto;
+      top: 30%;
+      width: 150px;
+    }
+  }
+  .notification{
+    width: 140px;
+    margin: auto;
+    padding: 5px;
+    border-radius: 2px;
+    background:#49d74f;
+    color: white;
+    font-size: 25px;
+  }
+  .success{
+    background:#49d74f;
+    border: 1px solid #49d74f;
+  }
+  .failed{
+    background:#d14d38;
+    border: 1px solid #d14d38;
+  }
   h1 {
     width: 100%;
     font-size: 80px;
@@ -23,8 +57,9 @@
     cursor: pointer;
   }
   .todoInput {
+    font-size: 22px;
     width: 50%;
-    padding: 18px 20px 12px;
+    padding: 11px 20px;
     margin: 8px 0;
     display: inline-block;
     border: 1px solid #ccc;
@@ -50,7 +85,11 @@
 
   .add_btn {
     background-color: #4caf50;
-  line-height: 1.5;
+    line-height: 1.6;
+  }
+  .update_btn {
+    background-color: #008CBA;
+    line-height: 1.6;
   }
   #customers {
     tr:hover {
