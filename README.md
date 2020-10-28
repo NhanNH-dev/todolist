@@ -29,7 +29,7 @@ MAIN FUNCTIONS<br />
   - Creat a new Post	    Create a new post by user
   - Update a Post	    Update the post by user
   - Delete a Post	    Delete the post by user
-  - Notifications         Notify for users of successed or failed.
+  - Notifications           Notify for users of successed or failed.
 ```
 ![list post](https://user-images.githubusercontent.com/55623692/97390371-3f2c3e00-190f-11eb-97cb-004314ea367f.jpg)
 
